@@ -30,3 +30,6 @@ jobs:
       
       - name: Detect orphaned .rs files
         run: python scripts/check_orphan_modules.py
+      
+      - name: Check Doc Links
+        run: python scripts/check_doc_links.py

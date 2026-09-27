@@ -26,9 +26,9 @@
 //! raffle contract address **and** the request ID so that a valid proof for
 //! one raffle cannot be replayed against a different raffle or request.
 //!
-//! See [`docs/RANDOMNESS.md`](../../../../docs/RANDOMNESS.md) for a
+//! See [`docs/RANDOMNESS.md`](../../../docs/RANDOMNESS.md) for a
 //! higher-level comparison of all randomness modes, and
-//! [`docs/COMMIT_REVEAL.md`](../../../../docs/COMMIT_REVEAL.md) for the
+//! [`docs/COMMIT_REVEAL.md`](../../../docs/COMMIT_REVEAL.md) for the
 //! commit-reveal protocol specification.
 
 use soroban_sdk::{xdr::ToXdr, Address, Bytes, BytesN, Env, Vec};
@@ -100,7 +100,7 @@ use soroban_sdk::{xdr::ToXdr, Address, Bytes, BytesN, Env, Vec};
 /// [`RandomnessSource::External`] for high-value draws.
 ///
 /// See also: module-level documentation and
-/// [`docs/RANDOMNESS.md`](../../../../docs/RANDOMNESS.md).
+/// [`docs/RANDOMNESS.md`](../../../docs/RANDOMNESS.md).
 pub fn build_internal_seed(env: &Env, raffle_id: &Address) -> BytesN<32> {
     let timestamp = env.ledger().timestamp();
     let sequence = env.ledger().sequence();
@@ -265,7 +265,7 @@ impl WinnerSelectionStrategy for PrngWinnerSelection {
 ///
 /// A [`Bytes`] value that should be passed to `env.crypto().ed25519_verify`.
 ///
-/// See also: [`docs/RANDOMNESS.md`](../../../../docs/RANDOMNESS.md) — External
+/// See also: [`docs/RANDOMNESS.md`](../../../docs/RANDOMNESS.md) — External
 /// / VRF mode.
 pub fn build_vrf_proof_message(env: &Env, request_id: u64) -> Bytes {
     (env.current_contract_address(), request_id).to_xdr(env)
